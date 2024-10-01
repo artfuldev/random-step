@@ -1,5 +1,5 @@
 import { pipe } from "fp-ts/lib/function";
-import { and, token, one_or_more, map, whitespace } from "../parser";
+import { and, token, one_or_more, map, whitespace, or } from "../parser";
 import { Sinks } from "../sinks";
 import { EMPTY, of } from "rxjs";
 
@@ -13,7 +13,7 @@ export const parse = pipe(
     one_or_more(whitespace),
     token("version"),
     one_or_more(whitespace),
-    token("1")
+    or(token("1"), token("2"))
   ),
   map(([, , , , version]) => Handshake(version))
 );

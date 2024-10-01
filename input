@@ -1,5 +1,5 @@
-st3p version 1
+st3p version 2
 identify
 move 3_/3_/3_ x
-move 3_/_x_/3_ o
+move 3_/_x_/3_ o win-length 2
 quit

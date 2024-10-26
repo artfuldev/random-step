@@ -1,6 +1,6 @@
-import { app } from "./app";
-import { run } from "./framework";
-import { stdin, stdout, stderr, exit } from "./drivers";
+import { app } from './app';
+import { exit, stderr, stdin, stdout } from './drivers';
+import { run } from './framework';
 
 run(app, {
   stdin,

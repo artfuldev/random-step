@@ -1,9 +1,9 @@
-import { ParseResult, type Parser } from "../parser";
-import { Cell } from "./cell";
+import { ParseResult, type Parser } from '../parser';
+import { Cell } from './cell';
 
 export type Board = Cell[][];
 
-const expected = new Set("0123456789/_.xo".split(""));
+const expected = new Set('0123456789/_.xo'.split(''));
 
 const cells = new Set([
   Cell.Playable,
@@ -21,13 +21,13 @@ export const parse: Parser<Board> = (str) => {
     if (!expected.has(char)) {
       return ParseResult.Success(board, str.slice(i));
     }
-    if (char === "/") {
+    if (char === '/') {
       board.push([]);
       x++;
       count = 0;
       continue;
     }
-    const digit = parseInt(char);
+    const digit = Number.parseInt(char);
     if (Number.isSafeInteger(digit)) {
       count *= 10;
       count += digit;
@@ -41,5 +41,5 @@ export const parse: Parser<Board> = (str) => {
     }
     count = 0;
   }
-  return ParseResult.Success(board, "");
+  return ParseResult.Success(board, '');
 };

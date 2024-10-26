@@ -1,5 +1,5 @@
-import { ParseResult } from "./parse-result";
-import type { Parser } from "./parser";
+import { ParseResult } from './parse-result';
+import type { Parser } from './parser';
 
 export const token =
   <T extends string>(token: T): Parser<T> =>

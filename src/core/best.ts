@@ -1,4 +1,4 @@
-import { type Board, Cell } from "../t3en";
+import { type Board, Cell } from '../t3en';
 
 const random = <A>(as: A[]): A => {
   const index = Math.floor(Math.random() * as.length);
@@ -6,14 +6,14 @@ const random = <A>(as: A[]): A => {
 };
 
 export const best = async (
-  board: Board
+  board: Board,
 ): Promise<readonly [number, number]> => {
   const indices = board
     .flatMap((row, i) =>
-      row.map((cell, j) => [i, j, cell === Cell.Playable] as const)
+      row.map((cell, j) => [i, j, cell === Cell.Playable] as const),
     )
     .filter(([, , playable]) => playable);
-  if (indices.length === 0) throw new Error("no playable cells");
+  if (indices.length === 0) throw new Error('no playable cells');
   const [x, y] = random(indices);
   return [x, y];
 };

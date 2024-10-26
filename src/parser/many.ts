@@ -1,5 +1,5 @@
-import { ParseResult } from "./parse-result";
-import type { Parser } from "./parser";
+import { ParseResult } from './parse-result';
+import type { Parser } from './parser';
 
 export const many =
   <T>(parser: Parser<T>): Parser<T[]> =>
@@ -7,7 +7,7 @@ export const many =
     const results: T[] = [];
     let remaining = str;
     let result = parser(remaining);
-    while (result.type === "success") {
+    while (result.type === 'success') {
       results.push(result.parsed);
       remaining = result.remaining;
       result = parser(remaining);

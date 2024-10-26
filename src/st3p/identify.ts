@@ -1,15 +1,15 @@
-import * as P from "../parser";
-import { name, author, version, repository } from "../../package.json";
-import { pipe } from "fp-ts/lib/function";
-import type { Sinks } from "../sinks";
-import { EMPTY, from, map } from "rxjs";
+import { pipe } from 'fp-ts/lib/function';
+import { EMPTY, from, map } from 'rxjs';
+import { author, name, repository, version } from '../../package.json';
+import * as P from '../parser';
+import type { Sinks } from '../sinks';
 
-export type Identify = ["identify"];
-const Identify: Identify = ["identify"];
+export type Identify = ['identify'];
+const Identify: Identify = ['identify'];
 
 export const parse = pipe(
-  P.token("identify"),
-  P.map(() => Identify)
+  P.token('identify'),
+  P.map(() => Identify),
 );
 
 export const identify = (_: Identify): Sinks => {
@@ -21,7 +21,7 @@ export const identify = (_: Identify): Sinks => {
       `author ${author}`,
       `version ${version}`,
       `url ${repository.url}`,
-      "ok",
+      'ok',
     ]).pipe(map((str) => `identify ${str}`)),
   };
 };

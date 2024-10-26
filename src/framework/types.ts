@@ -1,5 +1,6 @@
-import { Observable } from "rxjs";
+import type { Observable } from 'rxjs';
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export type SinkProxies<Si> = { [P in keyof Si]: Observable<any> };
 
 export type Driver<Si, So> = Si extends void ? () => So : (stream: Si) => So;
@@ -7,9 +8,12 @@ export type Driver<Si, So> = Si extends void ? () => So : (stream: Si) => So;
 export type DisposeFunction = () => void;
 
 export type Drivers = {
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  // biome-ignore lint/suspicious/noConfusingVoidType: <explanation>
   [name: string]: Driver<Observable<any>, any | void>;
 };
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export type Main = (...args: Array<any>) => any;
 
 export type Sources<D extends Drivers> = { [k in keyof D]: ReturnType<D[k]> };
@@ -17,12 +21,8 @@ export type Sources<D extends Drivers> = { [k in keyof D]: ReturnType<D[k]> };
 export type Sinks<M extends Main> = ReturnType<M>;
 
 export type MatchingMain<D extends Drivers, M extends Main> =
-  | (Main & {
-      (so: Sources<D>): Sinks<M>;
-    })
-  | (Main & {
-      (): Sinks<M>;
-    });
+  | (Main & ((so: Sources<D>) => Sinks<M>))
+  | (Main & (() => Sinks<M>));
 
 /**
  * For whatever reason, this does not work with RxJS observables,
@@ -35,8 +35,10 @@ type WidenStream<S, U> = S extends Observable<infer T>
   ? T extends U
     ? U
     : never
-  : any;
+  : // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    any;
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 type GetValidInputs<D extends Driver<any, any>> = D extends Driver<infer S, any>
   ? S extends Observable<infer T>
     ? T
@@ -47,6 +49,8 @@ export type MatchingDrivers<D extends Drivers, M extends Main> = Drivers & {
   [k in string & keyof Sinks<M>]:
     | (() => Sources<D>[k])
     | ((
-        si: Observable<WidenStream<ToStream<Sinks<M>[k]>, GetValidInputs<D[k]>>>
+        si: Observable<
+          WidenStream<ToStream<Sinks<M>[k]>, GetValidInputs<D[k]>>
+        >,
       ) => Sources<D>[k]);
 };

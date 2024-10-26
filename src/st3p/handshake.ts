@@ -1,21 +1,21 @@
-import { pipe } from "fp-ts/lib/function";
-import { and, token, one_or_more, map, whitespace, or } from "../parser";
-import type { Sinks } from "../sinks";
-import { EMPTY, of } from "rxjs";
+import { pipe } from 'fp-ts/lib/function';
+import { EMPTY, of } from 'rxjs';
+import { and, map, one_or_more, or, token, whitespace } from '../parser';
+import type { Sinks } from '../sinks';
 
 type Version = string;
-export type Handshake = ["handshake", Version];
-const Handshake = (version: Version): Handshake => ["handshake", version];
+export type Handshake = ['handshake', Version];
+const Handshake = (version: Version): Handshake => ['handshake', version];
 
 export const parse = pipe(
   and(
-    token("st3p"),
+    token('st3p'),
     one_or_more(whitespace),
-    token("version"),
+    token('version'),
     one_or_more(whitespace),
-    or(token("1"), token("2"))
+    or(token('1'), token('2')),
   ),
-  map(([, , , , version]) => Handshake(version))
+  map(([, , , , version]) => Handshake(version)),
 );
 
 export const handshake = ([, version]: Handshake): Sinks => {

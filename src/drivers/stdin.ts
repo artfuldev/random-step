@@ -1,5 +1,5 @@
-import { createInterface } from "node:readline";
-import { type Observable, fromEvent } from "rxjs";
+import { createInterface } from 'node:readline';
+import { type Observable, fromEvent } from 'rxjs';
 
 type Sources = {
   line$: Observable<string>;
@@ -10,6 +10,6 @@ export const stdin = (): Sources => {
     input: process.stdin,
   });
   return {
-    line$: fromEvent<string>(rl, "line"),
+    line$: fromEvent<string>(rl, 'line'),
   };
 };

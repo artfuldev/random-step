@@ -1,6 +1,6 @@
-import { type Option, map, getOrElse } from "fp-ts/lib/Option";
-import type { Parser } from "./parser";
-import { ParseResult } from "./parse-result";
+import { type Option, getOrElse, map } from 'fp-ts/lib/Option';
+import { ParseResult } from './parse-result';
+import type { Parser } from './parser';
 
 export const filter =
   <A>(reason: (a: A) => Option<string>) =>
@@ -9,7 +9,7 @@ export const filter =
     ParseResult.match<A, ParseResult<A>>({
       success: (parsed, remaining) =>
         getOrElse(() => ParseResult.Success<A>(parsed, remaining))(
-          map((x: string) => ParseResult.Failure<A>(x))(reason(parsed))
+          map((x: string) => ParseResult.Failure<A>(x))(reason(parsed)),
         ),
       failure: (reason) => ParseResult.Failure(reason),
     })(parser(str));

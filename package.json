@@ -9,6 +9,7 @@
     "url": "https://github.com/artfuldev/random-step"
   },
   "scripts": {
+    "check": "bunx biome check --write ./src",
     "start": "bun run src/index.ts",
     "test": "bun run src/index.ts < input"
   },
@@ -16,6 +17,7 @@
   "author": "artfuldev<hello@artful.dev>",
   "license": "MIT",
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@types/bun": "latest",
     "@types/node": "^20.10.5",
     "typescript": "^5.3.3"

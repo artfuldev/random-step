@@ -1,15 +1,16 @@
-export type ParseSuccess<T> = { type: "success"; parsed: T; remaining: string };
-export type ParseFailure = { type: "failure"; reason: string };
+export type ParseSuccess<T> = { type: 'success'; parsed: T; remaining: string };
+export type ParseFailure = { type: 'failure'; reason: string };
 export type ParseResult<T> = ParseSuccess<T> | ParseFailure;
 
 export const ParseResult = {
   Success: <T>(parsed: T, remaining: string): ParseResult<T> => ({
-    type: "success",
+    type: 'success',
     parsed,
     remaining,
   }),
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   Failure: <T = any>(reason: string): ParseResult<T> => ({
-    type: "failure",
+    type: 'failure',
     reason,
   }),
   match:
@@ -22,9 +23,9 @@ export const ParseResult = {
     }) =>
     (result: ParseResult<A>): B => {
       switch (result.type) {
-        case "success":
+        case 'success':
           return success(result.parsed, result.remaining);
-        case "failure":
+        case 'failure':
           return failure(result.reason);
       }
     },

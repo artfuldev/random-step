@@ -2,7 +2,7 @@ import { pipe } from "fp-ts/lib/function";
 import * as P from "../parser";
 import * as T from "../t3en";
 import { best } from "../core/best";
-import { Sinks } from "../sinks";
+import type { Sinks } from "../sinks";
 import { EMPTY, catchError, filter, from, map, of } from "rxjs";
 
 type Infinite = ["infinite"];

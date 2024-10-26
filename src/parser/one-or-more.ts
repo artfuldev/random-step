@@ -1,5 +1,5 @@
 import { pipe } from "fp-ts/lib/function";
-import { Parser } from "./parser";
+import type { Parser } from "./parser";
 import { map } from "./map";
 import { and } from "./and";
 import { many } from "./many";

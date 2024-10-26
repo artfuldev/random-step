@@ -1,5 +1,5 @@
 import { ParseResult } from "./parse-result";
-import { Parser } from "./parser";
+import type { Parser } from "./parser";
 
 type Combined<A extends any[]> = {
   readonly [I in keyof A]: Parser<A[I]>;

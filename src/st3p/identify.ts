@@ -1,7 +1,7 @@
 import * as P from "../parser";
 import { name, author, version, repository } from "../../package.json";
 import { pipe } from "fp-ts/lib/function";
-import { Sinks } from "../sinks";
+import type { Sinks } from "../sinks";
 import { EMPTY, from, map } from "rxjs";
 
 export type Identify = ["identify"];

@@ -1,6 +1,6 @@
 import { pipe } from "fp-ts/lib/function";
-import { Digit, digit } from "./digit";
-import { Parser } from "./parser";
+import { type Digit, digit } from "./digit";
+import type { Parser } from "./parser";
 import { filter } from "./filter";
 import { map } from "./map";
 import { none, some } from "fp-ts/lib/Option";

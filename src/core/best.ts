@@ -1,4 +1,4 @@
-import { Board, Cell } from "../t3en";
+import { type Board, Cell } from "../t3en";
 
 const random = <A>(as: A[]): A => {
   const index = Math.floor(Math.random() * as.length);

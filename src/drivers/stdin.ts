@@ -1,5 +1,5 @@
 import { createInterface } from "node:readline";
-import { Observable, fromEvent } from "rxjs";
+import { type Observable, fromEvent } from "rxjs";
 
 type Sources = {
   line$: Observable<string>;

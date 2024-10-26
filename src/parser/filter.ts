@@ -1,5 +1,5 @@
-import { Option, map, getOrElse } from "fp-ts/lib/Option";
-import { Parser } from "./parser";
+import { type Option, map, getOrElse } from "fp-ts/lib/Option";
+import type { Parser } from "./parser";
 import { ParseResult } from "./parse-result";
 
 export const filter =

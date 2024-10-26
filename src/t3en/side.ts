@@ -1,4 +1,4 @@
-import { Parser, or, token } from "../parser";
+import { type Parser, or, token } from "../parser";
 
 export enum Side {
   X = "x",

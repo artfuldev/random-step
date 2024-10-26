@@ -1,4 +1,4 @@
 export { Cell } from "./cell";
 export { Side } from "./side";
-export { Board } from "./board";
-export { State, parse } from "./state";
+export type { Board } from "./board";
+export { type State, parse } from "./state";

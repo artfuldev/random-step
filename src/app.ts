@@ -1,8 +1,8 @@
 import { filter, map, mergeWith, of, switchMap } from "rxjs";
-import { ParseFailure, ParseSuccess } from "./parser";
-import { Command, run, parse } from "./st3p";
-import { Sources } from "./sources";
-import { Sinks } from "./sinks";
+import type { ParseFailure, ParseSuccess } from "./parser";
+import { type Command, run, parse } from "./st3p";
+import type { Sources } from "./sources";
+import type { Sinks } from "./sinks";
 
 export const app = ({ stdin: { line$ } }: Sources): Sinks => {
   const parsed$ = line$.pipe(map(parse));

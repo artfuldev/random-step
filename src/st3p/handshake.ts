@@ -1,6 +1,6 @@
 import { pipe } from "fp-ts/lib/function";
 import { and, token, one_or_more, map, whitespace, or } from "../parser";
-import { Sinks } from "../sinks";
+import type { Sinks } from "../sinks";
 import { EMPTY, of } from "rxjs";
 
 type Version = string;

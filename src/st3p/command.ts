@@ -1,6 +1,6 @@
 import { EMPTY, of } from "rxjs";
-import { Parser, or } from "../parser";
-import { Sinks } from "../sinks";
+import { type Parser, or } from "../parser";
+import type { Sinks } from "../sinks";
 import * as H from "./handshake";
 import * as I from "./identify";
 import * as M from "./move";

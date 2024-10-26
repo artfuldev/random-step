@@ -1,5 +1,5 @@
 import { ParseResult } from "./parse-result";
-import { Parser } from "./parser";
+import type { Parser } from "./parser";
 
 export const many =
   <T>(parser: Parser<T>): Parser<T[]> =>

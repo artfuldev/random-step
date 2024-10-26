@@ -1,5 +1,5 @@
 import { pipe } from "fp-ts/lib/function";
-import { Parser, and, map, whitespace } from "../parser";
+import { type Parser, and, map, whitespace } from "../parser";
 import * as B from "./board";
 import * as S from "./side";
 

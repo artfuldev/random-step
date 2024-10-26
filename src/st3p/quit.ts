@@ -1,6 +1,6 @@
 import { EMPTY, of } from "rxjs";
 import * as P from "../parser";
-import { Sinks } from "../sinks";
+import type { Sinks } from "../sinks";
 
 export type Quit = ["quit"];
 

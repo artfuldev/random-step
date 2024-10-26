@@ -1,5 +1,5 @@
 import { ParseResult } from ".";
-import { Parser } from "./parser";
+import type { Parser } from "./parser";
 
 export const map =
   <T, R>(f: (arg: T) => R) =>

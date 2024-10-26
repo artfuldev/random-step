@@ -1,4 +1,4 @@
-import { ParseResult, Parser } from "../parser";
+import { ParseResult, type Parser } from "../parser";
 import { Cell } from "./cell";
 
 export type Board = Cell[][];
